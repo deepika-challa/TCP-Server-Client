@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -17,15 +18,39 @@ public class Client {
 		Integer port = 8080;
 		String add = "localhost";
 		Socket conn = new Socket(add,port);
-		System.out.println("Sucessfully connected");
 		
 		OutputStream dout = conn.getOutputStream();
 		InputStream din =  conn.getInputStream();
+		System.out.println("Sucessfully connected");
+
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(din));
-		String message = reader.readLine();    
+		PrintWriter writer = new PrintWriter(dout, true);
+		String msg= "";
 		
+		String [] messages;		
+		int n=0;
 		
+		while (!"\n".equals(msg)) {
+			System.out.print("*"+msg);
+			
+			msg = reader.readLine();    
+			
+			System.out.println("line read");
+			if(msg.equals("TEXT TCP 1.0")) {
+				writer.println("OK");
+				System.out.println("OK sent");
+				//Phase 2
+				
+				
+				
+				
+				
+		
+			}
+
+			
+		}
 
 	}
 	
