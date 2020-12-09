@@ -62,7 +62,7 @@ public class Server {
 				int value2 = rand.nextInt();
 				
 				//send to client
-				writer.println(cmd + "\s" + value1 + "\s" + value2);
+				
 				
 				if (choice == 0) {
 					cmd = "add";
@@ -86,10 +86,7 @@ public class Server {
 				}
 				
 				System.out.println(cmd + "\s" + value1 + "\s" + value2);
-
 				writer.println(cmd + "\s" + value1 + "\s" + value2);
-
-				
 
 			}
 
@@ -101,7 +98,6 @@ public class Server {
 				float value2 = val2 + rand.nextFloat();
 				
 				//send to client
-				writer.println(cmd + "\s" + value1 + "\s" + value2);
 
 				if (choice == 0) {
 					cmd = "fadd";
@@ -122,7 +118,6 @@ public class Server {
 				}
 
 				System.out.println(cmd + "\s" + value1 + "\s" + value2);
-
 				writer.println(cmd + "\s" + value1 + "\s" + value2);
 
 			}
