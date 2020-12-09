@@ -65,12 +65,7 @@ public class Client {
 
 					writer.println(String.format("%8.8g", ans));
 
-					msg = reader.readLine();
-
-					if (msg.equals("OK")) {
-						System.out.println("all done");
-						System.exit(0);
-					}
+					
 
 				} else {
 					int value1 = Integer.valueOf(cmdARR[1]);
@@ -90,14 +85,25 @@ public class Client {
 
 					writer.println(String.valueOf(ans));
 
-					msg = reader.readLine();
-
-					if (msg.equals("OK")) {
-						System.out.println("all done");
-						System.exit(0);
-					}
-
 				}
+				
+				msg = reader.readLine();
+
+				if (msg.equals("OK")) {
+					System.out.println("all done");
+					}
+				
+				else {
+					
+					System.out.println("Recieved  Error");
+					
+				}
+				
+				din.close();
+		        dout.close();
+		        conn.close();
+		        System.exit(0);
+				
 
 			}
 

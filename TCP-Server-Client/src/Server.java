@@ -16,14 +16,11 @@ public class Server {
 
 		Integer port = 8080;
 		ServerSocket serverSocket = new ServerSocket(port);
-		
-		
-		
-		
-		
+ 	
 		while(true){
 
 		// listen for client
+		System.out.println("*****Waiting for client********");
 		Socket client = serverSocket.accept();
 
 		System.out.println("Client Connected");
@@ -48,9 +45,9 @@ public class Server {
 			System.out.println("Phase 2");
 
 			Random rand = new Random();
-			int select = rand.nextInt(8);
+			int select = rand.nextInt(8);// choose arithmetic operations
 
-			int choice = select % 4; // choose between arithmetic oppERATIONS
+			int choice = select % 4; //  chose float or int
 
 			String cmd = "";
 			String ans;
@@ -131,18 +128,23 @@ public class Server {
 
 			if (response.equals(String.valueOf(ans))) {
 				writer.println("OK");
+				System.out.println("sent OK message");
 
 			} else {
 				writer.println("ERROR");
+				System.out.println("sent Error message");
 
 			}
+			
 
 		}
 		
+		System.out.println("****Disconnecting****");
+		din.close();
+        dout.close();
+        client.close();
 		
-		
-		
-		///Close connection
+	///Close connection
 		
 
 	}
