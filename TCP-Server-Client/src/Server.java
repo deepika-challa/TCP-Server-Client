@@ -1,6 +1,8 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,15 +17,16 @@ public class Server {
 		while(true) {
 			Socket client = serverSocket.accept();
 			
-			DataInputStream in=new DataInputStream(client.getInputStream());  	  
-			DataOutputStream out=new DataOutputStream(client.getOutputStream());
-			
-			out.writeUTF("TEXT TCP 1.0\n");
-			out.writeUTF("\n");
+			System.out.println("Client Connected");
 			
 			
+			OutputStream dout = client.getOutputStream();
+			
+			PrintWriter writer = new PrintWriter(dout, true);
+			writer.println("TEXT TCP 1.0");
+			writer.println("");
 
-			
+			break;
 		}
 		
 		
