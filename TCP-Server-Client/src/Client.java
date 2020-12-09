@@ -24,7 +24,6 @@ public class Client {
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(din));
 		String message = reader.readLine();    
-		System.out.println(message);
 		
 		
 
