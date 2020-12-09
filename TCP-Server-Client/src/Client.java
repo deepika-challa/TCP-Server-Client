@@ -27,16 +27,15 @@ public class Client {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(din));
 		PrintWriter writer = new PrintWriter(dout, true);
 		String msg= "";
-		
-		String [] messages;		
+			
 		int n=0;
 		
 		while (!"\n".equals(msg)) {
-			System.out.print("*"+msg);
+			System.out.println("*"+msg);
 			
 			msg = reader.readLine();    
 			
-			System.out.println("line read");
+			
 			if(msg.equals("TEXT TCP 1.0")) {
 				writer.println("OK");
 				System.out.println("OK sent");
@@ -44,28 +43,67 @@ public class Client {
 				String cmd = reader.readLine();
 				
 				
+				System.out.println(" cmd : " + cmd);
+				String[] cmdARR =  cmd.split("\s");
 				
 				
-				if (cmd.charAt(0)=='f') {
+				if (cmdARR[0].charAt(0)=='f') {
+					//Float arithmetic
+					float value1 = Float.valueOf(cmdARR[1]);
+					float value2 = Float.valueOf(cmdARR[2]);
+					float ans ;
 					
-					
-					
-					
+					if (cmdARR[0]=="fadd") {
+						ans = value1 + value2;
+						
+						
+					}
+					else if(cmdARR[0]=="fmul") {
+						ans = value1 * value2;
+						
+					}
+					else if (cmdARR[0]=="fdiv") {
+						ans = value1/value2;
+						
+					}
+					else {
+						ans = value1 -value2;
+						
+					}
+	
 				}
 				else {
+					int value1 = Integer.valueOf(cmdARR[1]);
+					int value2 = Integer.valueOf(cmdARR[2]);
+					int ans;
+					if (cmdARR[0]=="add") {
+						ans = value1 + value2;
+						
+					}
+					else if(cmdARR[0]=="mul") {
+						ans = value1 * value2;
+					}
+					else if (cmdARR[0]=="div") {
+						ans = value1 / value2;
+					}
+					else {
+						ans = value1 -value2;
+						
+					}
+
+					writer.println(String.format("%8.8g", ans));
 					
 					
+					
+					msg = reader.readLine();
+					
+					if (msg=="OK") {
+						System.out.println("all done");
+					}
 					
 					
 				}
-				
-				
-				
-				
-				
-				
-				
-				
+		
 				
 		
 			}

@@ -16,6 +16,12 @@ public class Server {
 
 		Integer port = 8080;
 		ServerSocket serverSocket = new ServerSocket(port);
+		
+		
+		
+		
+		
+		while(true){
 
 		// listen for client
 		Socket client = serverSocket.accept();
@@ -39,6 +45,7 @@ public class Server {
 		if (message.equals("OK")) {
 
 			// phase 2 start:
+			System.out.println("Phase 2");
 
 			Random rand = new Random();
 			int select = rand.nextInt(8);
@@ -46,46 +53,43 @@ public class Server {
 			int choice = select % 4; // choose between arithmetic oppERATIONS
 
 			String cmd = "";
+			String ans;
 
 			if (select > 3) {
 				// generate integer for operations
 
 				int value1 = rand.nextInt();
 				int value2 = rand.nextInt();
-				int ans;
-
+				
+				//send to client
+				writer.println(cmd + "\s" + value1 + "\s" + value2);
+				
 				if (choice == 0) {
 					cmd = "add";
-					ans = value1 + value2;
+					ans = String.valueOf(value1 + value2);
 
 				} else if (choice == 1) {
 					cmd = "mul";
-					ans = value1 * value2;
+					ans = String.valueOf(value1 * value2);
 
 				}
 
 				else if (choice == 2) {
 					cmd = "div";
-					ans = value1 / value2;
+					ans = String.valueOf(value1 / value2);
 
 				} else {
 
 					cmd = "sub";
-					ans = value1 - value2;
+					ans = String.valueOf(value1 - value2);
 
 				}
+				
+				System.out.println(cmd + "\s" + value1 + "\s" + value2);
 
 				writer.println(cmd + "\s" + value1 + "\s" + value2);
 
-				String response = reader.readLine();
-
-				if (response.equals(String.valueOf(ans))) {
-					writer.println("OK");
-
-				} else {
-					writer.println("ERROR");
-
-				}
+				
 
 			}
 
@@ -95,42 +99,58 @@ public class Server {
 				int val2 = rand.nextInt();
 				float value1 = val1 + rand.nextFloat();
 				float value2 = val2 + rand.nextFloat();
-				float ans;
+				
+				//send to client
+				writer.println(cmd + "\s" + value1 + "\s" + value2);
 
 				if (choice == 0) {
 					cmd = "fadd";
-					ans = value1 + value2;
+					ans = String.format("%8.8g", value1 + value2);
 
 				} else if (choice == 1) {
 					cmd = "fmul";
-					ans = value1 * value2;
+					ans = String.format("%8.8g",value1 * value2);
 				}
 
 				else if (choice == 2) {
 					cmd = "fdiv";
-					ans = value1 / value2;
+					ans = String.format("%8.8g",value1 / value2);
 
 				} else {
 					cmd = "fsub";
-					ans = value1 - value2;
+					ans = String.format("%8.8g",value1 - value2);
 				}
+
+				System.out.println(cmd + "\s" + value1 + "\s" + value2);
 
 				writer.println(cmd + "\s" + value1 + "\s" + value2);
 
-				String response = reader.readLine();
+			}
+			
 
-				if (response.equals(String.valueOf(ans))) {
-					writer.println("OK");
+			String response = reader.readLine();
+			
+			
+			System.out.println("ans is : " +ans);
+			System.out.println("response is : "+ response);
 
-				} else {
-					writer.println("ERROR");
+			if (response.equals(String.valueOf(ans))) {
+				writer.println("OK");
 
-				}
+			} else {
+				writer.println("ERROR");
 
 			}
 
 		}
+		
+		
+		
+		
+		///Close connection
+		
 
+	}
 	}
 
 }
