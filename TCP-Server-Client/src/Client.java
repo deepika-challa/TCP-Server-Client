@@ -41,6 +41,27 @@ public class Client {
 				writer.println("OK");
 				System.out.println("OK sent");
 				//Phase 2
+				String cmd = reader.readLine();
+				
+				
+				
+				
+				if (cmd.charAt(0)=='f') {
+					
+					
+					
+					
+				}
+				else {
+					
+					
+					
+					
+				}
+				
+				
+				
+				
 				
 				
 				
