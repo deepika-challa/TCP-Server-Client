@@ -6,17 +6,26 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.Random;
 
 public class Server {
 
 	public static void main(String[] args) throws IOException {
+		
+		
+		String ip = args[0].split(":")[0]; 
 
-		Integer port = 8080;
-		ServerSocket serverSocket = new ServerSocket(port);
- 	
+		Integer port = Integer.valueOf(args[0].split(":")[1]);
+		
+		ServerSocket serverSocket = new ServerSocket();  
+		//Binding the SocketAddress with inetAddress and port  
+		SocketAddress endPoint=new InetSocketAddress(ip, port);  
+		serverSocket.bind(endPoint);  
+
 		while(true){
 
 		// listen for client

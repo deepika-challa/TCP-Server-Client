@@ -15,9 +15,9 @@ public class Client {
 	private String Accp = "TEXT TCP 1.0";
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		Integer port = 8080;
-		String add = "localhost";
-		Socket conn = new Socket(add, port);
+		String ip = args[0].split(":")[0]; 
+		Integer port = Integer.valueOf(args[0].split(":")[1]);
+		Socket conn = new Socket(ip, port);
 
 		OutputStream dout = conn.getOutputStream();
 		InputStream din = conn.getInputStream();
