@@ -42,16 +42,18 @@ public class Server {
 
 		PrintWriter writer = new PrintWriter(dout, true);
 		writer.println("TEXT TCP 1.0");
-		System.out.println("message sent");
+		writer.println();
+		System.out.println("message sent:  TEXT TCP 1.0");
 
 		String message = reader.readLine();
+		System.out.println("**" +message+"**");
 
 		// Phase 2 check
 
 		if (message.equals("OK")) {
 
 			// phase 2 start:
-			System.out.println("Phase 2");
+			System.out.println("Phase 2 start ");
 
 			Random rand = new Random();
 			int select = rand.nextInt(8);// choose arithmetic operations
