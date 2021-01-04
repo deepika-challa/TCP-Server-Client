@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.util.Random;
 
-public class Server {
+public class server {
 
 	public static void main(String[] args) throws IOException {
 		
@@ -46,7 +46,7 @@ public class Server {
 		System.out.println("message sent:  TEXT TCP 1.0");
 
 		String message = reader.readLine();
-		System.out.println("**" +message+"**");
+		System.out.println("Recieved :" +message);
 
 		// Phase 2 check
 
@@ -93,8 +93,8 @@ public class Server {
 
 				}
 				
-				System.out.println(cmd + "\s" + value1 + "\s" + value2);
-				writer.println(cmd + "\s" + value1 + "\s" + value2);
+				System.out.println("Sending Command:"+cmd + " " + value1 + " " + value2);
+				writer.println(cmd + " " + value1 + " " + value2);
 
 			}
 
@@ -125,8 +125,8 @@ public class Server {
 					ans = String.format("%8.8g",value1 - value2);
 				}
 
-				System.out.println(cmd + "\s" + value1 + "\s" + value2);
-				writer.println(cmd + "\s" + value1 + "\s" + value2);
+				System.out.println("Sending Command:"+cmd + " " + value1 + " " + value2);
+				writer.println(cmd + " " + value1 + " " + value2);
 
 			}
 			

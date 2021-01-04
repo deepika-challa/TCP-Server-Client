@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client {
+public class client {
 
 	private String Accp = "TEXT TCP 1.0";
 
@@ -33,12 +33,11 @@ public class Client {
 		while (!"".equals(msg)) {	
 			
 			msg = reader.readLine();
-			System.out.println("**" +msg+"**");
+			System.out.println("Recieved: " +msg);
 
 			if (msg.equals("TEXT TCP 1.0")) {				
-				System.out.println("Recieved: TEXT TCP 1.0");
+				//System.out.println("Recieved: TEXT TCP 1.0");
 				process = true;
-
 			}
 
 		}
@@ -51,8 +50,8 @@ public class Client {
 			// Phase 2
 			String cmd = reader.readLine();
 
-			System.out.println("**" +cmd+"**");
-			String[] cmdARR = cmd.split("\s");
+			System.out.println("Recieved: " +cmd);
+			String[] cmdARR = cmd.split(" ");
 
 			if (cmdARR[0].charAt(0) == 'f') {
 				// Float arithmetic
@@ -75,6 +74,7 @@ public class Client {
 				}
 
 				writer.println(String.format("%8.8g", ans));
+				System.out.println("Sending Ans:" +String.format("%8.8g", ans));
 
 				
 
@@ -95,11 +95,12 @@ public class Client {
 				}
 
 				writer.println(String.valueOf(ans));
+				System.out.println("Sending Ans:" +String.valueOf(ans));
 
 			}
 			
 			msg = reader.readLine();
-			System.out.println("**" +msg+"**");
+			System.out.println("Recieved: " +msg);
 			if (msg.equals("OK")) {
 				
 				System.out.println("all done");
